@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🍲 Recipe Recommender</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>🍲 Recipe Recommender</h1>
+      <p>Enter your ingredients and discover delicious recipes instantly!</p>
+      <form method="POST" id="recipeForm">
+        <input type="text" name="ingredients" id="ingredients"
+               placeholder="e.g. chicken, tomato, onion" required>
+        <button type="submit">Get Recipes</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Recipes Section -->
+  <section class="recipes">
+    {% if recipes %}
+      <h2>✨ Recommended Recipes</h2>
+      <div class="recipe-grid">
+        {% for recipe in recipes %}
+          <div class="recipe-card">
+            <h3>🍴 Recipe {{ loop.index }}</h3>
+            <p>{{ recipe }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </section>
+
+  <footer>
+    Built with ❤️ for Hackathon 2025
+  </footer>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
